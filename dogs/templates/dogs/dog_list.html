@@ -3,6 +3,13 @@
 
 {% block content %}
 
+            <div class="col-12 mb-5">
+                <a href="{% url 'dogs:dog_create' category_pk %}" type="button" class="btn btn-sm btn-outline-secondary">Создать карточку собаки</a>
+                <a href="{% url 'dogs:categories'  %}" type="button" class="btn btn-sm btn-outline-secondary">Назад к породам</a>
+            </div>
+
+
+
         {% for object in object_list %}
 
         <div class="col">
@@ -22,6 +29,8 @@
 <!--                  {% endif %}-->
 
               </p>
+              <span class="text-muted">{{ object.birth_day}}</span>
+
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 
@@ -30,8 +39,13 @@
 
               </div>
             </div>
+            <div class="card-footer">
+                <a href="{% url 'dogs:dog_update' object.pk %}"  type="button" class="btn btn-sm btn-outline-secondary"> Редактировать </a>
+                <a href="{% url 'dogs:dog_delete' object.pk %}"  type="button" class="btn btn-sm btn-outline-secondary"> Удалить </a>
+            </div>
           </div>
         </div>
+
 
         {% endfor %}
 {% endblock %}
